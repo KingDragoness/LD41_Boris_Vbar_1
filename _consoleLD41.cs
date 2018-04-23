@@ -240,7 +240,8 @@ public class _consoleLD41 : MonoBehaviour {
 		}
 
 		craftingResult.SetActive (true);
-		result.text = "Fail!";
+
+
 		if (gun == 1 && spice == 1 && cookedBanana == 1) {
 			
 			for (int x = 0; x < backpackSlots.Count; x++) {
@@ -266,9 +267,7 @@ public class _consoleLD41 : MonoBehaviour {
 			GameObject o = specialItems [0];
 			Instantiate (o, craftingAreaPoint.position, craftingAreaPoint.rotation);
 			result.text = "Gun with Banana!";
-		}
-
-		if (bottles == 1 && jerrycan == 1) {
+		} else if (bottles >= 1 && jerrycan >= 1) {
 
 			for (int x = 0; x < backpackSlots.Count; x++) {
 				if (backpackSlots [x].itemID == 6) {
@@ -288,9 +287,7 @@ public class _consoleLD41 : MonoBehaviour {
 			GameObject o = specialItems [1];
 			Instantiate (o, craftingAreaPoint.position, craftingAreaPoint.rotation);
 			result.text = "Molotov Cocktail!";
-		}
-
-		if (bowl == 1 && cookedBanana == 1) {
+		} else if (bowl >= 1 && cookedBanana >= 1) {
 
 			for (int x = 0; x < backpackSlots.Count; x++) {
 				if (backpackSlots [x].itemID == 4) {
@@ -310,9 +307,7 @@ public class _consoleLD41 : MonoBehaviour {
 			GameObject o = specialItems [2];
 			Instantiate (o, craftingAreaPoint.position, craftingAreaPoint.rotation);
 			result.text = "Bowl with Bananas!";
-		}
-
-		if (bowl == 1 && jerrycan == 1) {
+		} else if (bowl >= 1 && jerrycan >= 1) {
 
 			for (int x = 0; x < backpackSlots.Count; x++) {
 				if (backpackSlots [x].itemID == 7) {
@@ -332,9 +327,7 @@ public class _consoleLD41 : MonoBehaviour {
 			GameObject o = specialItems [3];
 			Instantiate (o, craftingAreaPoint.position, craftingAreaPoint.rotation);
 			result.text = "Jerry Can Soup!";
-		}
-
-		if (tastelessBowl == 1 && cookedSpice == 1) {
+		} else if (tastelessBowl >= 1 && cookedSpice >= 1) {
 
 			for (int x = 0; x < backpackSlots.Count; x++) {
 				if (backpackSlots [x].itemID == 14) {
@@ -354,6 +347,8 @@ public class _consoleLD41 : MonoBehaviour {
 			GameObject o = specialItems [4];
 			Instantiate (o, craftingAreaPoint.position, craftingAreaPoint.rotation);
 			result.text = "Curry Soup!";
+		} else {
+			result.text = "Fail!";
 		}
 
 	}
@@ -404,20 +399,11 @@ public class _consoleLD41 : MonoBehaviour {
 
 	private void transitionSong() {
 		if (!perma) {
-			if (audioPlayer_calm.volume > 0) {
-				audioPlayer_calm.volume -= 0.1f * Time.deltaTime;
-			}
+			audioPlayer_calm.volume = 0;
 
-			if (audioPlayer_EDM.volume < 0.6f) {
-				audioPlayer_EDM.volume += 0.1f * Time.deltaTime;
-			}
+			audioPlayer_EDM.volume = 0.75f;
 
-			if (audioPlayer_EDM.volume > 0.6f) {
-				audioPlayer_EDM.volume = 0.6f;
-			}
-			if (audioPlayer_calm.volume < 0.1f) {
-				perma = true;
-			}
+
 			allowTransition = false;
 		}
 	}
