@@ -25,8 +25,12 @@ public class BodyguardAI : MonoBehaviour {
 	void Update() {
 		if (alertMode && !isDead) {
 			transform.LookAt (target);
-			rb.AddForce (transform.forward * 150);
-			rb.AddForce (transform.up * 10);
+			rb.AddForce (transform.forward * 90);
+			rb.AddForce (transform.up * 20);
+
+			if (rb.velocity.magnitude > 7) {
+				rb.velocity = rb.velocity.normalized * 7;
+			}
 		}
 		if (HP < 0) {
 			Died ();

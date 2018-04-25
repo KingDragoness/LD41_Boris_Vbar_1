@@ -407,4 +407,12 @@ public class _consoleLD41 : MonoBehaviour {
 			allowTransition = false;
 		}
 	}
+
+	public void RestartLevel() {
+		UnityEngine.SceneManagement.SceneManager.LoadScene( UnityEngine.SceneManagement.SceneManager.GetActiveScene().name );
+	}
+
+	public void QuitGame() {
+		Application.Quit ();
+	}
 }
